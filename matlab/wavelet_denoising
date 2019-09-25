@@ -1,0 +1,36 @@
+clc;
+clear all;
+X = imread('image.jpg');
+nbc = size(X,1);
+
+% Perform a wavelet decomposition of the image
+% at level 3 using coif2.
+wname = 'sym6'; lev = 5;
+[c,l] = wavedec2(X,lev,wname);
+
+% Estimate the noise standard deviation from the
+% detail coefficients at level 1.
+det1 = detcoef2('compact',c,l,1);
+sigma = median(abs(det1))/0.6745;
+
+% Use wbmpen for selecting global threshold  
+% for image denoising.
+alpha = 1.2;
+thr = wbmpen(c,l,sigma,alpha);
+
+% Use wdencmp for denoising the image using the above
+% thresholds with soft thresholding and approximation kept.
+keepapp = 1;
+xd = wdencmp('gbl',c,l,wname,lev,thr,'s',keepapp);
+
+% Plot original and denoised images.
+figure(1);
+subplot(221);imagesc(X);
+title('original image')
+colormap(gray(nbc));
+%subplot(222), image(wcodemat(X,nbc))
+%title('Noise')
+subplot(222);imagesc(wcodemat(xd,nbc))
+title('noise free image');
+saveas(figure(1),'output.jpg')
+imwrite(xd,'noisefreewave.jpg')
