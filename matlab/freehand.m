@@ -1,3 +1,8 @@
+#used to generate masks(bone area) in a set of images 
+
+
+
+
 close all;  clear all;  clc;
 New_Directory = 'C:/Users/akkia/OneDrive/Desktop/test';                                 
 folder = dir(New_Directory);
