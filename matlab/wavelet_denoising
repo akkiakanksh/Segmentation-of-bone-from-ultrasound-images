@@ -1,3 +1,6 @@
+# In ultrasound images speckle noise is commonly occured noise. To remove speckle noise we use wavelet denoising  
+
+
 clc;
 clear all;
 X = imread('image.jpg');
@@ -28,8 +31,6 @@ figure(1);
 subplot(221);imagesc(X);
 title('original image')
 colormap(gray(nbc));
-%subplot(222), image(wcodemat(X,nbc))
-%title('Noise')
 subplot(222);imagesc(wcodemat(xd,nbc))
 title('noise free image');
 saveas(figure(1),'output.jpg')
