@@ -4,5 +4,5 @@ This repository consists of code used in project for "Segmentation of bone from 
 3. Masks are generated for train set in Matlab using imfreehand function
 4. U-Net convolutional network is used for Biomedical image segmentation. This U-Net model is used to segment bone in ultrasound image
 5. Images are resized to 256 x 256
-6. Dataset and masks generated are passed to U-Net model. To get the desired output model is trained
+6. Dataset and masks generated are passed to U-Net model. To get the desired output, model is trained
 7. Output obtained are stored in a particular folder for futher usage 
